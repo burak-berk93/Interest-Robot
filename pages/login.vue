@@ -29,7 +29,7 @@
   
       if (response.token) {
         localStorage.setItem('token', response.token); // Token'ı sakla
-        router.push('/admin'); // Başarılıysa admin paneline yönlendir
+        router.push('/'); // Başarılıysa admin paneline yönlendir
       }
     } catch (error) {
       errorMessage.value = 'Giriş başarısız. Kullanıcı adı veya şifre yanlış!';

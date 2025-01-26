@@ -55,6 +55,8 @@
 
 <script setup>
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const formValues = ref({
   presentCapital: '',
@@ -72,6 +74,13 @@ const termArray = ['Year', 'Month', 'Day'];
 const selectTermArray = ref("");
 const resultValue = ref(0);
 
+// Sayfa yüklendiğinde kontrol yap
+onMounted(() => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    router.push('/login'); // Giriş yapılmamışsa login sayfasına yönlendir
+  }
+});
 
 function allowNumbersAndDot(event, field) {
   const charCode = event.charCode || event.keyCode;
